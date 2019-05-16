@@ -46,6 +46,8 @@ class PhonebookController extends Controller
         $pb->phone = $request->phone;
         $pb->email = $request->email;
         $pb->save();
+         return $pb;
+    
     }
 
     /**
@@ -79,12 +81,13 @@ class PhonebookController extends Controller
      */
     public function update(PhonebookRequest $request)
     {
-         $pb= Phonebook::find($request->id);
+        $pb= Phonebook::find($request->id);
         $pb->name = $request->name;
         $pb->phone = $request->phone;
         $pb->email = $request->email;
         $pb->save();
     }
+
 
     /**
      * Remove the specified resource from storage.

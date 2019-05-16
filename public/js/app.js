@@ -1822,7 +1822,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post('/phonebook', this.$data.list).then(function (response) {
-        return console.log(response);
+        _this.close();
+
+        _this.$parent.lists.push(response.data);
       })["catch"](function (error) {
         return _this.errors = error.response.data.errors;
       });
@@ -1933,11 +1935,13 @@ var Update = __webpack_require__(/*! ./Update.vue */ "./resources/js/components/
       // console.log(`${key} ${id}`)
       if (confirm("are you sure")) {
         axios["delete"]("/phonebook/".concat(id)).then(function (response) {
-          return console.log('deleted');
+          return _this2.lists.splice(key, 1);
         })["catch"](function (error) {
           return _this2.errors = error.response.data.errors;
         });
       }
+
+      console.log("{$key} {$id}");
     }
   }
 });

@@ -79,9 +79,10 @@ del(key,id){
   // console.log(`${key} ${id}`)
   if (confirm("are you sure")){
   axios.delete(`/phonebook/${id}`)
-      .then((response)=> console.log('deleted'))
+      .then((response)=> this.lists.splice(key,1))
       .catch((error) => this.errors = error.response.data.errors)
     }
+    console.log(`{$key} {$id}`)
 }
 }
 }
